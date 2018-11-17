@@ -2,10 +2,41 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
+
+
 public class kLargest {
-	final static int T = 1;
+	final static int T = 15;
 	public static Random random = new Random();
 
+	
+	public static void main(String args[]) {
+
+		int n = 100000;
+		int[] arr = new int[n];
+		for (int i = 0; i < n; i++) {
+			arr[i] = i;
+		}
+		Shuffle.shuffle(arr);
+
+		// int temp[] = { 10, 7, 9, 4, 1, 7, 4, 8, 7, 1 };
+		// int maxstr = longestStreak(arr);
+
+		// System.out.println(maxstr);
+		int k = 4;
+		Timer timer = new Timer();
+		kLargest l = new kLargest();
+		l.select(arr, k);
+
+		for (int i = arr.length - k; i < arr.length; i++) {
+			System.out.println(arr[i]);
+		}
+		
+		timer.end();
+		System.out.println( "\n" + timer);
+
+	}
+	
+	
 	public static int longestStreak(int[] arr) {
 		Set<Integer> set = new HashSet<>();
 
@@ -103,27 +134,7 @@ public class kLargest {
 
 	}
 
-	public static void main(String args[]) {
-
-		int n = 1000;
-		int[] arr = new int[n];
-		for (int i = 0; i < n; i++) {
-			arr[i] = i;
-		}
-		Shuffle.shuffle(arr);
-
-		// int temp[] = { 10, 7, 9, 4, 1, 7, 4, 8, 7, 1 };
-		// int maxstr = longestStreak(arr);
-
-		// System.out.println(maxstr);
-		int k = 4;
-		kLargest l = new kLargest();
-		l.select(arr, k);
-
-		for (int i = arr.length - k; i < arr.length; i++) {
-			System.out.println(arr[i]);
-		}
-	}
+	
 
 	/**
 	 * @author rbk : based on algorithm described in a book
